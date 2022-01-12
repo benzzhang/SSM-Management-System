@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
         <!--数据库表名及对应的 Java 模型类名-->
-<!--        <table tableName="t_student" domainObjectName="Student"
+        <table tableName="t_student" domainObjectName="Student"
                 enableCountByExample="false"
                 enableUpdateByExample="false"
                 enableDeleteByExample="false"
@@ -63,7 +63,7 @@
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
-               selectByExampleQueryId="false"/>-->
+               selectByExampleQueryId="false"/>
 
         <table tableName="t_members" domainObjectName="Members"
                enableCountByExample="false"
@@ -72,7 +72,7 @@
                enableSelectByExample="false"
                selectByExampleQueryId="false"/>
 
-<!--        <table tableName="t_journal" domainObjectName="Journal"
+        <table tableName="t_journal" domainObjectName="Journal"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -83,6 +83,6 @@
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
-               selectByExampleQueryId="false"/>-->
+               selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
