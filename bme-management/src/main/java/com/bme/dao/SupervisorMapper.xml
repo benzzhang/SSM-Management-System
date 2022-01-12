@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bme.dao.SupervisorMapper">
+  <resultMap id="BaseResultMap" type="com.bme.domain.Supervisor">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="id_number" jdbcType="CHAR" property="idNumber" />
+    <result column="college" jdbcType="VARCHAR" property="college" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, sex, id_number, college
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_supervisor
+    where id = #{id,jdbcType=CHAR}
+  </select>
+
+  <select id="selectAll" resultType="com.bme.domain.Supervisor">
+    select
+    <include refid="Base_Column_List" />
+    from
+    t_supervisor
+  </select>
+
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    t_supervisor
+    where 1=1
+    <if test="id != '' and id != null">
+      and id = #{id,jdbcType=CHAR}
+    </if>
+    <if test="name !='' and name != null">
+      and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="sex !='' and sex != null">
+      and sex = #{sex,jdbcType=TINYINT}
+    </if>
+    <if test="college !='' and college != null">
+      and college like concat('%',#{college,jdbcType=VARCHAR},'%')
+    </if>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_supervisor
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bme.domain.Supervisor">
+    insert into t_supervisor (id, name, sex, id_number, 
+      college)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{idNumber,jdbcType=CHAR}, 
+      #{college,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bme.domain.Supervisor">
+    insert into t_supervisor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="college != null">
+        college,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=CHAR},
+      </if>
+      <if test="college != null">
+        #{college,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bme.domain.Supervisor">
+    update t_supervisor
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=CHAR},
+      </if>
+      <if test="college != null">
+        college = #{college,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bme.domain.Supervisor">
+    update t_supervisor
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      id_number = #{idNumber,jdbcType=CHAR},
+      college = #{college,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

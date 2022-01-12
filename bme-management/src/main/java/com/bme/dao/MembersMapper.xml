@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bme.dao.MembersMapper">
+  <resultMap id="BaseResultMap" type="com.bme.domain.Members">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="director_id" jdbcType="CHAR" property="directorId" />
+    <result column="executor_id" jdbcType="CHAR" property="executorId" />
+    <result column="archivist_id" jdbcType="CHAR" property="archivistId" />
+    <result column="conceptualization_id" jdbcType="CHAR" property="conceptualizationId" />
+    <result column="methodology_id" jdbcType="CHAR" property="methodologyId" />
+    <result column="investigation_id" jdbcType="CHAR" property="investigationId" />
+    <result column="writing_original_draft_id" jdbcType="CHAR" property="writingOriginalDraftId" />
+    <result column="writing_review_editing_id" jdbcType="CHAR" property="writingReviewEditingId" />
+    <result column="visualization_id" jdbcType="CHAR" property="visualizationId" />
+    <result column="software_id" jdbcType="CHAR" property="softwareId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, director_id, executor_id, archivist_id, conceptualization_id, methodology_id, 
+    investigation_id, writing_original_draft_id, writing_review_editing_id, visualization_id, 
+    software_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_members
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_members
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bme.domain.Members">
+    insert into t_members (id, director_id, executor_id, 
+      archivist_id, conceptualization_id, methodology_id, 
+      investigation_id, writing_original_draft_id, writing_review_editing_id, 
+      visualization_id, software_id)
+    values (#{id,jdbcType=INTEGER}, #{directorId,jdbcType=CHAR}, #{executorId,jdbcType=CHAR}, 
+      #{archivistId,jdbcType=CHAR}, #{conceptualizationId,jdbcType=CHAR}, #{methodologyId,jdbcType=CHAR}, 
+      #{investigationId,jdbcType=CHAR}, #{writingOriginalDraftId,jdbcType=CHAR}, #{writingReviewEditingId,jdbcType=CHAR}, 
+      #{visualizationId,jdbcType=CHAR}, #{softwareId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bme.domain.Members">
+    insert into t_members
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="directorId != null">
+        director_id,
+      </if>
+      <if test="executorId != null">
+        executor_id,
+      </if>
+      <if test="archivistId != null">
+        archivist_id,
+      </if>
+      <if test="conceptualizationId != null">
+        conceptualization_id,
+      </if>
+      <if test="methodologyId != null">
+        methodology_id,
+      </if>
+      <if test="investigationId != null">
+        investigation_id,
+      </if>
+      <if test="writingOriginalDraftId != null">
+        writing_original_draft_id,
+      </if>
+      <if test="writingReviewEditingId != null">
+        writing_review_editing_id,
+      </if>
+      <if test="visualizationId != null">
+        visualization_id,
+      </if>
+      <if test="softwareId != null">
+        software_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="directorId != null">
+        #{directorId,jdbcType=CHAR},
+      </if>
+      <if test="executorId != null">
+        #{executorId,jdbcType=CHAR},
+      </if>
+      <if test="archivistId != null">
+        #{archivistId,jdbcType=CHAR},
+      </if>
+      <if test="conceptualizationId != null">
+        #{conceptualizationId,jdbcType=CHAR},
+      </if>
+      <if test="methodologyId != null">
+        #{methodologyId,jdbcType=CHAR},
+      </if>
+      <if test="investigationId != null">
+        #{investigationId,jdbcType=CHAR},
+      </if>
+      <if test="writingOriginalDraftId != null">
+        #{writingOriginalDraftId,jdbcType=CHAR},
+      </if>
+      <if test="writingReviewEditingId != null">
+        #{writingReviewEditingId,jdbcType=CHAR},
+      </if>
+      <if test="visualizationId != null">
+        #{visualizationId,jdbcType=CHAR},
+      </if>
+      <if test="softwareId != null">
+        #{softwareId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bme.domain.Members">
+    update t_members
+    <set>
+      <if test="directorId != null">
+        director_id = #{directorId,jdbcType=CHAR},
+      </if>
+      <if test="executorId != null">
+        executor_id = #{executorId,jdbcType=CHAR},
+      </if>
+      <if test="archivistId != null">
+        archivist_id = #{archivistId,jdbcType=CHAR},
+      </if>
+      <if test="conceptualizationId != null">
+        conceptualization_id = #{conceptualizationId,jdbcType=CHAR},
+      </if>
+      <if test="methodologyId != null">
+        methodology_id = #{methodologyId,jdbcType=CHAR},
+      </if>
+      <if test="investigationId != null">
+        investigation_id = #{investigationId,jdbcType=CHAR},
+      </if>
+      <if test="writingOriginalDraftId != null">
+        writing_original_draft_id = #{writingOriginalDraftId,jdbcType=CHAR},
+      </if>
+      <if test="writingReviewEditingId != null">
+        writing_review_editing_id = #{writingReviewEditingId,jdbcType=CHAR},
+      </if>
+      <if test="visualizationId != null">
+        visualization_id = #{visualizationId,jdbcType=CHAR},
+      </if>
+      <if test="softwareId != null">
+        software_id = #{softwareId,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bme.domain.Members">
+    update t_members
+    set director_id = #{directorId,jdbcType=CHAR},
+      executor_id = #{executorId,jdbcType=CHAR},
+      archivist_id = #{archivistId,jdbcType=CHAR},
+      conceptualization_id = #{conceptualizationId,jdbcType=CHAR},
+      methodology_id = #{methodologyId,jdbcType=CHAR},
+      investigation_id = #{investigationId,jdbcType=CHAR},
+      writing_original_draft_id = #{writingOriginalDraftId,jdbcType=CHAR},
+      writing_review_editing_id = #{writingReviewEditingId,jdbcType=CHAR},
+      visualization_id = #{visualizationId,jdbcType=CHAR},
+      software_id = #{softwareId,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

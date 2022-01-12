@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bme.dao.JournalMapper">
+  <resultMap id="BaseResultMap" type="com.bme.domain.Journal">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+    <result column="impact_factor" jdbcType="REAL" property="impactFactor" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, publisher, impact_factor
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_journal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectAll" resultType="com.bme.domain.Journal">
+    select
+    <include refid="Base_Column_List" />
+    from
+    t_journal
+  </select>
+
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    t_journal
+    where 1=1
+    <if test="id != '' and id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="name !='' and name != null">
+      and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="publisher !='' and publisher != null">
+      and publisher = #{publisher,jdbcType=VARCHAR}
+    </if>
+    <if test="impact_factor !='' and impact_factor != null">
+      and impact_factor = #{impact_factor,jdbcType=REAL}
+    </if>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_journal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.bme.domain.Journal">
+    insert into t_journal (id, name, publisher, 
+      impact_factor)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}, 
+      #{impactFactor,jdbcType=REAL})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.bme.domain.Journal">
+    insert into t_journal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="publisher != null">
+        publisher,
+      </if>
+      <if test="impactFactor != null">
+        impact_factor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="impactFactor != null">
+        #{impactFactor,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bme.domain.Journal">
+    update t_journal
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="impactFactor != null">
+        impact_factor = #{impactFactor,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bme.domain.Journal">
+    update t_journal
+    set name = #{name,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      impact_factor = #{impactFactor,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
