@@ -49,7 +49,7 @@
                 </div>
                 <div class="providerAddBtn">
                     <input type="submit" name="save" id="save" value="保存">
-                    <input type="button" onclick="location='${pageContext.request.contextPath}/jsp/homepage.jsp'" value="返回"/>
+                    <input type="button" onclick="location='${pageContext.request.contextPath}/student/list.do?pn=${pageNow}'" value="返回"/>
               	</div>
             </s:form>
         </div>
