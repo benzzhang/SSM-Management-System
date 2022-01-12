@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80027
 File Encoding         : 65001
 
-Date: 2022-01-11 15:56:21
+Date: 2022-01-12 14:33:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `t_admin` (
 -- ----------------------------
 -- Records of t_admin
 -- ----------------------------
-INSERT INTO `t_admin` VALUES ('2019111093', '张剑', '0225', '0');
+INSERT INTO `t_admin` VALUES ('2019111093', '张谏', '0225', '0');
 
 -- ----------------------------
 -- Table structure for t_journal
