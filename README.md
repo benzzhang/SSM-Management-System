@@ -14,3 +14,5 @@
 * Journal
 > id(int), name, publisher, impact_factor
 ---
+表的设计不够合理，有些字段也没有使用到(admin -> permission_level)，t_journal还未使用
+简单的练手项目
