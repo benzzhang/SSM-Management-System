@@ -16,3 +16,8 @@
 ---
 表的设计不够合理，有些字段也没有使用到（admin -> __permission_level__），**t_journal**还未使用
 #### 简单的练手项目
+![stuList](https://user-images.githubusercontent.com/96578628/149077616-8eb8bf58-4340-48bc-9f9a-075b40881ebc.PNG)
+---
+![projectModify](https://user-images.githubusercontent.com/96578628/149077625-5f58b911-b0c8-4570-bbb3-995bd132bdac.png)
+---
+![search](https://user-images.githubusercontent.com/96578628/149077639-1fc68e16-6039-41fd-bde8-2513d83976bb.png)
